@@ -57,20 +57,24 @@ if(isset($_POST["reset"])){
   <meta name="author" content="">
 
   <title>Elsie Rental Management System</title>
-   <link rel="icon" href="res../res/img/office.png">
+    <link rel="icon" href="res/img/office.png">
+    <link rel="stylesheet" href="res/css/loader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
  <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
 <body>
+
+<div class="loader">
+  <div></div>
+  <div></div>
+</div>
+<div class="blurred-content">
 
   <div class="container">
 
@@ -83,7 +87,7 @@ if(isset($_POST["reset"])){
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block"><img src="house.jpg" alt="Rental House" width="500" height="560"></div>
+              <div class="col-lg-6 d-none d-lg-block"><img src="res/img/house.jpg" alt="Rental House" width="500" height="560"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
@@ -127,17 +131,18 @@ if(isset($_POST["reset"])){
       window.history.replaceState( null, null, window.location.href );
     }
   </script>
+   <script>
+        window.addEventListener('load', function () {
+        setTimeout(function() {
+            document.querySelector('.loader').style.display = 'none'; 
+            document.querySelector('.blurred-content').style.filter = 'none'; 
+        }, 2000);
+        });
+    </script>
 
-<!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-<!-- Bootstrap core JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/js/sb-admin-2.min.js"></script>
 
 </body>

@@ -6,12 +6,20 @@ include 'conn.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elsie Executive</title>
+  <title>Elsie Executive.</title>
    <link rel="icon" href="res/img/office.png">
   <link rel="stylesheet" href="res/css/index.css">
+  <link rel="stylesheet" href="res/css/loader.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+<div class="loader">
+  <div></div>
+  <div></div>
+</div>
+<div class="blurred-content">
+
+
   <nav class="navbar">
     <div class="container">
       <div class="navbar-header">
@@ -31,16 +39,25 @@ include 'conn.php';
           
           <li class="navbar-dropdown">
             <a href="#" class="dropdown-toggler" data-dropdown="my-dropdown-id">
-              Sign in as <i class="fa fa-angle-down"></i>
+                Sign in as <i class="fa fa-angle-down"></i>
             </a>
 
             <ul class="dropdown" id="my-dropdown-id">
-              <li><a href="log-in.php">Administrator</a></li>
-              <li class="separator"></li>
-              <li><a href="login.php">Tenant</a></li>
-              <li class="separator"></li>
-              <li><a href="login.php">Manager</a></li>
-              <li class="separator"></li>
+                <li>
+                    <a href="log-in.php"><i class="fa fa-user-shield"></i> Administrator </a>
+                </li>
+                <li class="separator"></li>
+
+                <li>
+                    <a href="login.php"><i class="fa fa-user"></i> Tenant </a>
+                </li>
+                <li class="separator"></li>
+
+                <li>
+                    <a href="login.php"><i class="fa fa-user-tie"></i> Manager</a>
+                </li>
+                <li class="separator"></li>
+                
             </ul>
           </li>
 
@@ -150,10 +167,20 @@ include 'conn.php';
     <p><span>Copyright &copy; <span id="currentYear"></span> Elsie-executive Appartments | All rights reserved</span>
       <script>document.getElementById("currentYear").textContent = new Date().getFullYear();</script></p>
   </footer>
-  
+  </div>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="res/js/index.js" defer></script>
+
+<script>
+    window.addEventListener('load', function () {
+      setTimeout(function() {
+        document.querySelector('.loader').style.display = 'none'; 
+        document.querySelector('.blurred-content').style.filter = 'none'; 
+      }, 2000);
+    });
+</script>
+
 
 </body>
 </html>

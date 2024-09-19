@@ -106,10 +106,17 @@ if (isset($_POST["login"])) {
     <meta name="author" content="">
     <title>Elsie Rental Management System</title>
       <link rel="icon" href="res/img/office.png">
+      <link rel="stylesheet" href="res/css/loader.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="loader">
+  <div></div>
+  <div></div>
+</div>
+<div class="blurred-content">
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">
@@ -153,14 +160,23 @@ if (isset($_POST["login"])) {
             </div>
         </div>
     </div>
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/sb-admin-2.min.js"></script>
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sb-admin-2@latest/js/sb-admin-2.min.js"></script>
+
+<script>
+    window.addEventListener('load', function () {
+      setTimeout(function() {
+        document.querySelector('.loader').style.display = 'none'; 
+        document.querySelector('.blurred-content').style.filter = 'none'; 
+      }, 2000);
+    });
+</script>
 </body>
 </html>

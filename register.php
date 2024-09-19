@@ -1,217 +1,190 @@
 <?php
-include "conn.php";
+  include "conn.php";
 
-function check($data){
-  $data= trim($data);
-  $data= htmlspecialchars($data);
-  $data= stripslashes($data);
-  return $data;
-}
-
-if(isset($_POST["submit"])){
-
-  $fname = check($_POST['FirstName']);
-  $lname = check($_POST['LastName']);
-  $prog = @check($_POST['programme']);
-  $reg = @check($_POST['regno']);
-  $occ = @check($_POST['occupation']);
-  $pno1 = check($_POST['pno1']);
-  $pno2 = check($_POST['pno2']);
-  $postal = check($_POST['postal']);
-  $city = check($_POST['city']);
-  $region = check($_POST['region']);
-  $uname = check($_POST['uname']);
-  $pword = check($_POST['password']);
-  $rpword = check($_POST['repeatPassword']);
-  $price = $_POST['price'];
-  $dur = $_POST['duration'];
-  $dur1 = $dur - 1;
-  $term = (int)$_POST['term'];
-  $contract = $_POST['contract'];
-  $house = $_POST['house'];
-  $price = (int)$_POST['price'];
-  $total_rent = $dur * $price;
-  $rent_per_term =$total_rent / $term;
-  $cpno1 = check($_POST['cpno1']);
-  $cpno2 = check($_POST['cpno2']);
-  $cpno3 = check($_POST['cpno3']);
-  $cpno4 = check($_POST['cpno4']);
-  $cfname1 = check($_POST['fname1']);
-  $cfname2 = check($_POST['fname2']);
-  $clname1 = check($_POST['lname1']);
-  $clname2 = check($_POST['lname2']);
-  $c_occu1 = check($_POST['occu1']);
-  $c_occu2 = check($_POST['occu2']);
-  $nature1 = check($_POST['nature1']);
-  $nature2 = check($_POST['nature2']);
-  $city1 = check($_POST['city1']);
-  $city2 = check($_POST['city2']);
-  $region1 = check($_POST['region1']);
-  $region2 = check($_POST['region2']);
-  $cemail1 = filter_var($_POST['email1'], FILTER_SANITIZE_EMAIL);
-  $cemail2 = filter_var($_POST['email2'], FILTER_SANITIZE_EMAIL);
-  $p_address1 = check($_POST['p_address1']);
-  $p_address2 = check($_POST['p_address2']);
-  if(date('d')<27){
-    $end_date = date('Y-m-t', strtotime('+'.$dur1.' month'));
-  }else{
-    $end_date = date('Y-m-t', strtotime('+'.$dur1.' month'));
+  function check($data){
+    $data= trim($data);
+    $data= htmlspecialchars($data);
+    $data= stripslashes($data);
+    return $data;
   }
-  if((date('d')<27)){
-    $start_day = date('Y-m-01');
-  }else{
-    $start_day = date('Y-m-01', strtotime('+1 month'));
-  }
-  $date_reg = date('Y-m-d');
-  $date_reg1 = date('Y-m-d H:i:s');
-  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-  $stat = "Active";
-  $status = 0;
+
+  if(isset($_POST["submit"])){
+
+    $fname = check($_POST['FirstName']);
+    $lname = check($_POST['LastName']);
+    $prog = @check($_POST['programme']);
+    $reg = @check($_POST['regno']);
+    $occ = @check($_POST['occupation']);
+    $pno1 = check($_POST['pno1']);
+    $pno2 = check($_POST['pno2']);
+    $postal = check($_POST['postal']);
+    $city = check($_POST['city']);
+    $region = check($_POST['region']);
+    $uname = check($_POST['uname']);
+    $pword = check($_POST['password']);
+    $rpword = check($_POST['repeatPassword']);
+    $price = $_POST['price'];
+    $dur = $_POST['duration'];
+    $dur1 = $dur - 1;
+    $term = (int)$_POST['term'];
+    $contract = $_POST['contract'];
+    $house = $_POST['house'];
+    $price = (int)$_POST['price'];
+    $total_rent = $dur * $price;
+    $rent_per_term =$total_rent / $term;
+    $cpno1 = check($_POST['cpno1']);
+    $cpno2 = check($_POST['cpno2']);
+    $cpno3 = check($_POST['cpno3']);
+    $cpno4 = check($_POST['cpno4']);
+    $cfname1 = check($_POST['fname1']);
+    $cfname2 = check($_POST['fname2']);
+    $clname1 = check($_POST['lname1']);
+    $clname2 = check($_POST['lname2']);
+    $c_occu1 = check($_POST['occu1']);
+    $c_occu2 = check($_POST['occu2']);
+    $nature1 = check($_POST['nature1']);
+    $nature2 = check($_POST['nature2']);
+    $city1 = check($_POST['city1']);
+    $city2 = check($_POST['city2']);
+    $region1 = check($_POST['region1']);
+    $region2 = check($_POST['region2']);
+    $cemail1 = filter_var($_POST['email1'], FILTER_SANITIZE_EMAIL);
+    $cemail2 = filter_var($_POST['email2'], FILTER_SANITIZE_EMAIL);
+    $p_address1 = check($_POST['p_address1']);
+    $p_address2 = check($_POST['p_address2']);
+    if(date('d')<27){
+      $end_date = date('Y-m-t', strtotime('+'.$dur1.' month'));
+    }else{
+      $end_date = date('Y-m-t', strtotime('+'.$dur1.' month'));
+    }
+    if((date('d')<27)){
+      $start_day = date('Y-m-01');
+    }else{
+      $start_day = date('Y-m-01', strtotime('+1 month'));
+    }
+    $date_reg = date('Y-m-d');
+    $date_reg1 = date('Y-m-d H:i:s');
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $stat = "Active";
+    $status = 0;
 
 
-  if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    if(!ctype_alpha($fname)){
-      $fnameErr = "The name should only contain letters!";
-      echo "<script> alert('$fnameErr');</script>";
-    }
-    elseif ((strlen($fname)<3) || (strlen($fname)>10)) {
-      $fnameErr = "The name is either too short or too long";
-      echo "<script> alert('$fnameErr');</script>";
-    }
-    else {
-      if(!ctype_alpha($lname)){
-        $lnameErr = "The name should only contain letters!";
-        echo "<script> alert('$lnameErr');</script>";
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      if(!ctype_alpha($fname)){
+        $fnameErr = "The name should only contain letters!";
+        echo "<script> alert('$fnameErr');</script>";
       }
-      elseif ((strlen($lname)<3) || (strlen($lname)>10)) {
-        $lnameErr = "The name is either too short or too long";
-        echo "<script> alert('$lnameErr');</script>";
+      elseif ((strlen($fname)<3) || (strlen($fname)>10)) {
+        $fnameErr = "The name is either too short or too long";
+        echo "<script> alert('$fnameErr');</script>";
       }
       else {
-        if((ctype_digit($occ)) && !($occ == "")){
-          $occErr = "Your ocupation should only contain letters!";
-          echo "<script> alert('$occErr');</script>";
+        if(!ctype_alpha($lname)){
+          $lnameErr = "The name should only contain letters!";
+          echo "<script> alert('$lnameErr');</script>";
+        }
+        elseif ((strlen($lname)<3) || (strlen($lname)>10)) {
+          $lnameErr = "The name is either too short or too long";
+          echo "<script> alert('$lnameErr');</script>";
         }
         else {
-          if ((!is_numeric($pno1)) || (!is_numeric($pno2))) {
-            $pno1Err = "The phone number should not contain letters";
-            echo "<script> alert('$pno1Err');</script>";
-          }
-          elseif ((strlen($pno1) > 12)|| (strlen($pno2) > 12)) {
-            $pno1Err = "The phone number is too long";
-            echo "<script> alert('$pno1Err');</script>";
-          }
-          elseif ((strlen($pno1) < 12)|| (strlen($pno2) < 12)) {
-            $pno1Err = "The phone number is too short";
-            echo "<script> alert('$pno1Err');</script>";
+          if((ctype_digit($occ)) && !($occ == "")){
+            $occErr = "Your ocupation should only contain letters!";
+            echo "<script> alert('$occErr');</script>";
           }
           else {
-            if ((!is_numeric($cpno1)) || (!is_numeric($cpno2))) {
-              $cpno1Err = "The phone number should not contain letters";
-              echo "<script> alert('$cpno1Err');</script>";
+            if ((!is_numeric($pno1)) || (!is_numeric($pno2))) {
+              $pno1Err = "The phone number should not contain letters";
+              echo "<script> alert('$pno1Err');</script>";
             }
-            elseif ((strlen($cpno1) > 12)|| (strlen($cpno2) > 12)) {
-              $cpno1Err = "The phone number is too long";
-              echo "<script> alert('$cpno1Err');</script>";
+            elseif ((strlen($pno1) > 12)|| (strlen($pno2) > 12)) {
+              $pno1Err = "The phone number is too long";
+              echo "<script> alert('$pno1Err');</script>";
             }
-            elseif ((strlen($cpno1) < 12)|| (strlen($cpno2) < 12)) {
-              $cpno1Err = "The phone number is too short";
-              echo "<script> alert('$cpno1Err');</script>";
+            elseif ((strlen($pno1) < 12)|| (strlen($pno2) < 12)) {
+              $pno1Err = "The phone number is too short";
+              echo "<script> alert('$pno1Err');</script>";
             }
             else {
-              if (((!is_numeric($cpno3)) || (!is_numeric($cpno4))) && (!($cpno4 == "") || !($cpno3 == ""))) {
-                $cpno3Err = "The phone number should not contain letters";
-                echo "<script> alert('$cpno3Err');</script>";
+              if ((!is_numeric($cpno1)) || (!is_numeric($cpno2))) {
+                $cpno1Err = "The phone number should not contain letters";
+                echo "<script> alert('$cpno1Err');</script>";
               }
-              elseif (((strlen($cpno3) > 12)|| (strlen($cpno4) > 12)) && (!($cpno4 == "") || !($cpno3 == ""))) {
-                $cpno3Err = "The phone number is too long";
-                echo "<script> alert('$cpno3Err');</script>";
+              elseif ((strlen($cpno1) > 12)|| (strlen($cpno2) > 12)) {
+                $cpno1Err = "The phone number is too long";
+                echo "<script> alert('$cpno1Err');</script>";
               }
-              elseif (((strlen($cpno3) < 12)|| (strlen($cpno4) < 12)) && (!($cpno4 == "") || !($cpno3 == ""))) {
-                $cpno3Err = "The phone number is too short";
-                echo "<script> alert('$cpno3Err');</script>";
+              elseif ((strlen($cpno1) < 12)|| (strlen($cpno2) < 12)) {
+                $cpno1Err = "The phone number is too short";
+                echo "<script> alert('$cpno1Err');</script>";
               }
               else {
-                if((!ctype_alpha($cfname1)) || (!ctype_alpha($cfname2)) || (!ctype_alpha($clname1)) || (!ctype_alpha($clname2))){
-                  $cfname1Err = "The name should only contain letters!";
-                  echo "<script> alert('$cfname1Err');</script>";
+                if (((!is_numeric($cpno3)) || (!is_numeric($cpno4))) && (!($cpno4 == "") || !($cpno3 == ""))) {
+                  $cpno3Err = "The phone number should not contain letters";
+                  echo "<script> alert('$cpno3Err');</script>";
                 }
-                elseif ((strlen($cfname1)<3) || (strlen($cfname2)<3)) {
-                  $cfname1Err= "The name is too short";
-                  echo "<script> alert('$cfname1Err');</script>";
+                elseif (((strlen($cpno3) > 12)|| (strlen($cpno4) > 12)) && (!($cpno4 == "") || !($cpno3 == ""))) {
+                  $cpno3Err = "The phone number is too long";
+                  echo "<script> alert('$cpno3Err');</script>";
                 }
-                elseif ((strlen($clname1)<3) || (strlen($clname2)<3)) {
-                  $clname1Err = "The name is too short";
-                  echo "<script> alert('$clname1Err');</script>";
-                }
-                elseif ((strlen($cfname1)>10) || (strlen($cfname2)>10)) {
-                  $cfname1Err = "The name is too long";
-                  echo "<script> alert('$cfname1Err');</script>";
-                }
-                elseif ((strlen($clname1)>10) || (strlen($clname2)>10)) {
-                  $clname1Err = "The name is too long";
-                  echo "<script> alert('$clname1Err');</script>";
-
+                elseif (((strlen($cpno3) < 12)|| (strlen($cpno4) < 12)) && (!($cpno4 == "") || !($cpno3 == ""))) {
+                  $cpno3Err = "The phone number is too short";
+                  echo "<script> alert('$cpno3Err');</script>";
                 }
                 else {
-                  if((ctype_digit($c_occu1)) || (ctype_digit($c_occu2))){
-                    $c_occ1Err = "The occupation should only contain letters!";
-                    echo "<script> alert('$c_occ1Err');</script>";
+                  if((!ctype_alpha($cfname1)) || (!ctype_alpha($cfname2)) || (!ctype_alpha($clname1)) || (!ctype_alpha($clname2))){
+                    $cfname1Err = "The name should only contain letters!";
+                    echo "<script> alert('$cfname1Err');</script>";
+                  }
+                  elseif ((strlen($cfname1)<3) || (strlen($cfname2)<3)) {
+                    $cfname1Err= "The name is too short";
+                    echo "<script> alert('$cfname1Err');</script>";
+                  }
+                  elseif ((strlen($clname1)<3) || (strlen($clname2)<3)) {
+                    $clname1Err = "The name is too short";
+                    echo "<script> alert('$clname1Err');</script>";
+                  }
+                  elseif ((strlen($cfname1)>10) || (strlen($cfname2)>10)) {
+                    $cfname1Err = "The name is too long";
+                    echo "<script> alert('$cfname1Err');</script>";
+                  }
+                  elseif ((strlen($clname1)>10) || (strlen($clname2)>10)) {
+                    $clname1Err = "The name is too long";
+                    echo "<script> alert('$clname1Err');</script>";
+
                   }
                   else {
-                    if((ctype_digit($nature1)) || (ctype_digit($nature2))){
-                      $nature1Err = "Nature of the relationship should only contain letters!";
-                      echo "<script> alert('$nature1Err');</script>";
+                    if((ctype_digit($c_occu1)) || (ctype_digit($c_occu2))){
+                      $c_occ1Err = "The occupation should only contain letters!";
+                      echo "<script> alert('$c_occ1Err');</script>";
                     }
                     else {
-                      if (((!filter_var($cemail1, FILTER_VALIDATE_EMAIL)) && !($cemail1 == "")) || ((!filter_var($cemail2, FILTER_VALIDATE_EMAIL)) && !($cemail2 == ""))) {
-                        $cemail1Err = "Invalid Email";
-                        echo "<script> alert('$cemail1Err');</script>";
+                      if((ctype_digit($nature1)) || (ctype_digit($nature2))){
+                        $nature1Err = "Nature of the relationship should only contain letters!";
+                        echo "<script> alert('$nature1Err');</script>";
                       }
                       else {
-
-                        $sql4 = "SELECT * FROM tenant WHERE u_name = '$uname'";
-                        $query = mysqli_query($con, $sql4);
-                        if(mysqli_num_rows($query) > 0){
-                          echo "<script> alert('Username exists!!');</script>";
+                        if (((!filter_var($cemail1, FILTER_VALIDATE_EMAIL)) && !($cemail1 == "")) || ((!filter_var($cemail2, FILTER_VALIDATE_EMAIL)) && !($cemail2 == ""))) {
+                          $cemail1Err = "Invalid Email";
+                          echo "<script> alert('$cemail1Err');</script>";
                         }
                         else {
-                          if ((strlen($pword) < 8) || (strlen($rpword) < 8)) {
-                            echo "<script> alert('Password is too short');</script>";
+
+                          $sql4 = "SELECT * FROM tenant WHERE u_name = '$uname'";
+                          $query = mysqli_query($con, $sql4);
+                          if(mysqli_num_rows($query) > 0){
+                            echo "<script> alert('Username exists!!');</script>";
                           }
-                          elseif($pword == $rpword){
-                            if ($dur == 3) {
-                              if (!($term == 1)) {
-                                echo "<script> alert('3 months cannot have more than 1 term.');</script>";
-                              }
-                              else {
-                                $pword = md5($pword);
-                                $sql= "INSERT INTO tenant VALUES (' ','$fname','$lname','$prog','$reg','$occ','$pno1','$pno2','$email','$postal','$city','$region','$uname','$pword', '$date_reg', '$status')";
-
-                                mysqli_query($con, $sql);
-
-                                $last_id=mysqli_insert_id($con);
-
-                                $sql2= "INSERT INTO tenant_contacts VALUES (' ','$last_id','$cfname1','$clname1','$c_occu1','$nature1','$cpno1','$cpno3','$cemail1','$p_address1','$city1','$region1','$cfname2','$clname2','$c_occu2','$nature2','$cpno2','$cpno4', '$cemail2', '$p_address2', '$city2', '$region2')";
-
-                                mysqli_query($con, $sql2);
-
-                                $sql1 = "INSERT INTO contract VALUES (' ','$last_id', '$house','$dur','$total_rent','$term','$rent_per_term','$start_day', '$end_date', '$date_reg1', '$stat')";
-
-                                mysqli_query($con, $sql1);
-
-                                $sql3 = "UPDATE house SET status= '$contract' WHERE house_id = '$house'";
-                                mysqli_query($con, $sql3);
-                                mysqli_close($con);
-                                echo "<script type='text/javascript'>alert('Welcome $fname $lname! Your contract begins on $start_day and ends on $end_date.');</script>";
-                                echo '<style>body{display:none;}</style>';
-                                echo '<script>window.location.href = "login.php";</script>';
-
-                              }
-                            }elseif($dur == 6){
-                                if ($term == 4) {
-                                  echo "<script> alert('6 months cannot have more than 2 term.');</script>";
-                                }else {
+                          else {
+                            if ((strlen($pword) < 8) || (strlen($rpword) < 8)) {
+                              echo "<script> alert('Password is too short');</script>";
+                            }
+                            elseif($pword == $rpword){
+                              if ($dur == 3) {
+                                if (!($term == 1)) {
+                                  echo "<script> alert('3 months cannot have more than 1 term.');</script>";
+                                }
+                                else {
                                   $pword = md5($pword);
                                   $sql= "INSERT INTO tenant VALUES (' ','$fname','$lname','$prog','$reg','$occ','$pno1','$pno2','$email','$postal','$city','$region','$uname','$pword', '$date_reg', '$status')";
 
@@ -235,35 +208,63 @@ if(isset($_POST["submit"])){
                                   echo '<script>window.location.href = "login.php";</script>';
 
                                 }
+                              }elseif($dur == 6){
+                                  if ($term == 4) {
+                                    echo "<script> alert('6 months cannot have more than 2 term.');</script>";
+                                  }else {
+                                    $pword = md5($pword);
+                                    $sql= "INSERT INTO tenant VALUES (' ','$fname','$lname','$prog','$reg','$occ','$pno1','$pno2','$email','$postal','$city','$region','$uname','$pword', '$date_reg', '$status')";
 
-                              }else {
-                                $pword = md5($pword);
-                                $sql= "INSERT INTO tenant VALUES (' ','$fname','$lname','$prog','$reg','$occ','$pno1','$pno2','$email','$postal','$city','$region','$uname','$pword', '$date_reg', '$status')";
+                                    mysqli_query($con, $sql);
 
-                                mysqli_query($con, $sql);
+                                    $last_id=mysqli_insert_id($con);
 
-                                $last_id=mysqli_insert_id($con);
+                                    $sql2= "INSERT INTO tenant_contacts VALUES (' ','$last_id','$cfname1','$clname1','$c_occu1','$nature1','$cpno1','$cpno3','$cemail1','$p_address1','$city1','$region1','$cfname2','$clname2','$c_occu2','$nature2','$cpno2','$cpno4', '$cemail2', '$p_address2', '$city2', '$region2')";
 
-                                $sql2= "INSERT INTO tenant_contacts VALUES (' ','$last_id','$cfname1','$clname1','$c_occu1','$nature1','$cpno1','$cpno3','$cemail1','$p_address1','$city1','$region1','$cfname2','$clname2','$c_occu2','$nature2','$cpno2','$cpno4', '$cemail2', '$p_address2', '$city2', '$region2')";
+                                    mysqli_query($con, $sql2);
 
-                                mysqli_query($con, $sql2);
+                                    $sql1 = "INSERT INTO contract VALUES (' ','$last_id', '$house','$dur','$total_rent','$term','$rent_per_term','$start_day', '$end_date', '$date_reg1', '$stat')";
 
-                                $sql1 = "INSERT INTO contract VALUES (' ','$last_id', '$house','$dur','$total_rent','$term','$rent_per_term','$start_day', '$end_date', '$date_reg1', '$stat')";
+                                    mysqli_query($con, $sql1);
 
-                                mysqli_query($con, $sql1);
+                                    $sql3 = "UPDATE house SET status= '$contract' WHERE house_id = '$house'";
+                                    mysqli_query($con, $sql3);
+                                    mysqli_close($con);
+                                    echo "<script type='text/javascript'>alert('Welcome $fname $lname! Your contract begins on $start_day and ends on $end_date.');</script>";
+                                    echo '<style>body{display:none;}</style>';
+                                    echo '<script>window.location.href = "login.php";</script>';
 
-                                $sql3 = "UPDATE house SET status= '$contract' WHERE house_id = '$house'";
-                                mysqli_query($con, $sql3);
-                                mysqli_close($con);
-                                echo "<script type='text/javascript'>alert('Welcome $fname $lname! Your contract begins on $start_day and ends on $end_date.');</script>";
-                                echo '<style>body{display:none;}</style>';
-                                echo '<script>window.location.href = "login.php";</script>';
-                              }
+                                  }
 
-                          }
-                            else {
-                              echo "<script> alert('Password does not match');</script>";
+                                }else {
+                                  $pword = md5($pword);
+                                  $sql= "INSERT INTO tenant VALUES (' ','$fname','$lname','$prog','$reg','$occ','$pno1','$pno2','$email','$postal','$city','$region','$uname','$pword', '$date_reg', '$status')";
+
+                                  mysqli_query($con, $sql);
+
+                                  $last_id=mysqli_insert_id($con);
+
+                                  $sql2= "INSERT INTO tenant_contacts VALUES (' ','$last_id','$cfname1','$clname1','$c_occu1','$nature1','$cpno1','$cpno3','$cemail1','$p_address1','$city1','$region1','$cfname2','$clname2','$c_occu2','$nature2','$cpno2','$cpno4', '$cemail2', '$p_address2', '$city2', '$region2')";
+
+                                  mysqli_query($con, $sql2);
+
+                                  $sql1 = "INSERT INTO contract VALUES (' ','$last_id', '$house','$dur','$total_rent','$term','$rent_per_term','$start_day', '$end_date', '$date_reg1', '$stat')";
+
+                                  mysqli_query($con, $sql1);
+
+                                  $sql3 = "UPDATE house SET status= '$contract' WHERE house_id = '$house'";
+                                  mysqli_query($con, $sql3);
+                                  mysqli_close($con);
+                                  echo "<script type='text/javascript'>alert('Welcome $fname $lname! Your contract begins on $start_day and ends on $end_date.');</script>";
+                                  echo '<style>body{display:none;}</style>';
+                                  echo '<script>window.location.href = "login.php";</script>';
+                                }
+
                             }
+                              else {
+                                echo "<script> alert('Password does not match');</script>";
+                              }
+                          }
                         }
                       }
                     }
@@ -275,17 +276,13 @@ if(isset($_POST["submit"])){
         }
       }
     }
+    else {
+      $emailErr = "Invalid Email";
+      echo "<script> alert('$emailErr');</script>";
+    }
   }
-  else {
-    $emailErr = "Invalid Email";
-    echo "<script> alert('$emailErr');</script>";
-  }
-
-
-
-
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -299,6 +296,7 @@ if(isset($_POST["submit"])){
 
   <title>Elsie Rental Management System</title>
    <link rel="icon" href="res/img/office.png">
+   <link rel="stylesheet" href="res/css/loader.css">
 
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -313,7 +311,12 @@ if(isset($_POST["submit"])){
 </head>
 
 <body>
-
+<div class="loader">
+  <div></div>
+  <div></div>
+</div>
+<div class="blurred-content">
+  
   <div class="container">
 
     <div class="card o-hnameden border-0 shadow-lg my-5">
@@ -659,18 +662,20 @@ $(document).ready(function(){
     }
   </script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sb-admin-2@latest/js/sb-admin-2.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-
+<script>
+    window.addEventListener('load', function () {
+      setTimeout(function() {
+        document.querySelector('.loader').style.display = 'none'; 
+        document.querySelector('.blurred-content').style.filter = 'none'; 
+      }, 2000);
+    });
+</script>
 </body>
 
 </html>

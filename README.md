@@ -12,7 +12,7 @@ To run this project, you will need:
 
 ## Features
 
-### For Tenants:
+### For Tenants
 
 - **Tenant Registration**: Users can sign up by providing their name, house number, contact details, and duration of stay.
 - **Payment System**: Tenants can pay rent via integrated payment gateways like Paystack and Mpesa.
@@ -20,13 +20,13 @@ To run this project, you will need:
 - **Tenant Dashboard**: Offers an overview of payment history and outstanding balances.
 - **Secure Login**: Passwords are securely stored using hashing techniques.
 
-### For Property Managers (Agents and Owners):
+### For Property Managers (Agents and Owners)
 
 - **Manage Tenants**: View, approve, and manage tenant registrations.
 - **Rent Collection Management**: Track rent payments, send reminders for unpaid rent, and manage balance arrears.
 - **Notifications**: Alerts for overdue or paid rent.
 
-### Admin Features:
+### Admin Features
 
 - **System Management**: Add, remove, and manage agents and tenants.
 - **House Management**: Add, remove, and manage houses.

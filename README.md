@@ -89,12 +89,15 @@ To extract the callback URL for your application when using ngrok, follow these 
 1. **Start ngrok**: Run ngrok as mentioned above to expose your local server.
 
 2. **Get the Forwarding URL**: After running ngrok, you will see an output in your terminal that includes a line similar to:
+
    ```
    Forwarding                    https://<your-ngrok-subdomain>.ngrok.io -> http://localhost:80
    ```
+
    This `https` URL is what you will use as the callback URL.
 
 3. **Update Your Callback Configuration**: Open your `callback.php` file or wherever you need to set the callback URL in your application. Replace the existing callback URL with the one provided by ngrok. For example:
+
    ```php
    $callbackUrl = 'https://<your-ngrok-subdomain>.ngrok.io/callback.php';
    ```
@@ -151,7 +154,7 @@ The database consists of two main tables:
 | u_name      | varchar(30)  | Username.                          |
 | p_word      | varchar(60)  | Hashed password.                   |
 | day_reg     | DATE         | Date of registration.              |
-| status      | int(2)       | Status(Active,inctive)             |
+| status      | int(2)       | Status(`Active`,`inactive`)        |
 
 ### `payment` Table
 
@@ -169,7 +172,7 @@ The database consists of two main tables:
 
 1. Ensure XAMPP is running with MySQL set up.
 2. Place project files in the `htdocs` directory of your XAMPP installation.
-3. Access the project via your browser at `http://localhost/your-project-folder`.
+3. Access the project via your browser at `http://localhost/Rentalpay`.
 
 ## Development Status
 

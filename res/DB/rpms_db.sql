@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2024 at 11:11 PM
+-- Generation Time: Sep 20, 2024 at 03:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,13 +46,12 @@ CREATE TABLE `contract` (
 --
 
 INSERT INTO `contract` (`contract_id`, `tenant_id`, `house_id`, `duration_month`, `total_rent`, `terms`, `rent_per_term`, `start_day`, `end_day`, `date_contract_sign`, `status`) VALUES
-(1, 1, 2, 12, 720000, 2, 360000, '2019-08-01', '2020-07-31', '2019-08-07 20:40:22', 'Active'),
-(4, 5, 1, 3, 240000, 1, 240000, '2019-08-01', '2019-10-31', '2019-08-07 00:18:18', 'Active'),
+(4, 5, 1, 3, 240000, 1, 240000, '2023-08-01', '2023-10-31', '2023-08-07 00:18:18', 'Active'),
 (5, 6, 4, 12, 420000, 4, 105000, '2023-08-01', '2024-08-01', '2023-08-01 00:25:47', 'Active'),
-(8, 9, 6, 6, 480000, 2, 240000, '2019-07-01', '2019-12-31', '2019-07-15 02:52:34', 'Inactive'),
-(9, 4, 2, 3, 180000, 1, 180000, '2019-08-01', '2019-07-20', '2019-07-19 03:12:17', 'Inactive'),
-(12, 10, 2, 12, 720000, 4, 180000, '2019-07-01', '2020-06-30', '2019-07-23 12:20:10', 'Inactive'),
-(15, 4, 7, 3, 180000, 1, 180000, '2019-08-01', '2019-10-31', '2019-08-04 00:18:11', 'Active');
+(8, 9, 6, 6, 480000, 2, 240000, '2023-07-01', '2023-12-31', '2023-07-15 02:52:34', 'Inactive'),
+(9, 4, 2, 3, 180000, 1, 180000, '2023-08-01', '2023-07-20', '2023-07-19 03:12:17', 'Inactive'),
+(12, 10, 2, 12, 720000, 4, 180000, '2023-07-01', '2023-06-30', '2023-07-23 12:20:10', 'Inactive'),
+(15, 4, 7, 3, 180000, 1, 180000, '2023-08-01', '2023-10-31', '2023-08-04 00:18:11', 'Active');
 
 -- --------------------------------------------------------
 
@@ -73,15 +72,18 @@ CREATE TABLE `house` (
 --
 
 INSERT INTO `house` (`house_id`, `house_name`, `compartment`, `rent_per_month`, `status`) VALUES
-(1, 'A1', 'Yes', 80000, 'Occupied'),
-(2, 'A2', 'No', 60000, 'Occupied'),
-(3, 'D3', 'No', 60000, 'Empty'),
-(4, 'C4', 'Yes', 35000, 'Occupied'),
+(1, 'A1', 'Yes', 80000, 'Empty'),
+(2, 'A2', 'No', 60000, 'Empty'),
+(3, 'D3', 'No', 70000, 'Empty'),
+(4, 'C4', 'Yes', 80000, 'Occupied'),
 (6, 'A3', 'Yes', 80000, 'Empty'),
-(7, 'A4', 'No', 60000, 'Occupied'),
-(8, 'B3', 'Yes', 35000, 'Empty'),
-(9, 'D5', 'Yes', 35000, 'Empty'),
-(10, 'A7', 'Yes', 50000, 'Empty');
+(7, 'A4', 'No', 50000, 'Occupied'),
+(8, 'B3', 'Yes', 60000, 'Empty'),
+(9, 'D5', 'Yes', 70000, 'Empty'),
+(10, 'A7', 'Yes', 50000, 'Empty'),
+(11, 'A5', 'No', 50000, 'Empty'),
+(12, 'A6', 'Yes', 80000, 'Empty'),
+(13, 'A0', 'Yes', 80000, 'Empty');
 
 -- --------------------------------------------------------
 
@@ -104,16 +106,16 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `tenant_id`, `ref_no`, `amount`, `pay_from`, `pay_to`, `date`) VALUES
-(2, 4, '2147483647', 180000, 'August 2019', 'October 2019', '2019-08-08 11:11:19'),
-(4, 4, '8654712358', 180000, 'February 2020', 'April 2020', '2019-08-08 12:56:45'),
-(5, 6, '784156978', 210000, 'August 2019', 'October 2019', '2019-08-08 13:10:15'),
-(6, 6, '7456257832', 210000, 'November 2019', 'January 2020', '2019-08-08 13:40:31'),
-(7, 6, '39222962841', 210000, 'February 2020', 'April 2020', '2019-08-08 14:15:58'),
-(8, 5, '1551327804', 240000, 'August 2019', 'October 2019', '2019-08-09 14:24:29'),
-(9, 6, '71308220851', 60000, 'May 2020', 'June 2020', '2019-08-14 11:06:25'),
-(10, 6, '72912660562', 70000, 'June 2020', 'July 2020', '2019-08-14 11:22:13'),
-(11, 6, '36480604749', 30000, 'August 2020', 'August 2020', '2019-08-14 11:30:35'),
-(12, 9, '2099451721', 150000, 'August 2019', 'October 2019', '2019-08-15 10:45:04');
+(2, 4, '2147483647', 180000, 'August 2024', 'October 2024', '2024-08-08 11:11:19'),
+(4, 4, '8654712358', 180000, 'February 2024', 'April 2024', '2024-08-08 12:56:45'),
+(5, 6, '784156978', 210000, 'August 2024', 'October 2024', '2024-08-08 13:10:15'),
+(6, 6, '7456257832', 210000, 'November 2024', 'January 2024', '2024-08-08 13:40:31'),
+(7, 6, '39222962841', 210000, 'February 2024', 'April 2024', '2024-08-08 14:15:58'),
+(8, 5, '1551327804', 240000, 'January 2024', 'December 2025', '2024-08-09 14:24:29'),
+(9, 6, '71308220851', 60000, 'May 2024', 'June 2024', '2024-08-14 11:06:25'),
+(10, 6, '72912660562', 70000, 'June 2024', 'July 2024', '2024-08-14 11:22:13'),
+(11, 6, '36480604749', 30000, 'August 2024', 'August 2024', '2024-08-14 11:30:35'),
+(12, 9, '2099451721', 150000, 'August 2024', 'October 2024', '2024-08-15 10:45:04');
 
 -- --------------------------------------------------------
 
@@ -145,13 +147,14 @@ CREATE TABLE `tenant` (
 --
 
 INSERT INTO `tenant` (`tenant_id`, `fname`, `lname`, `programme`, `reg_no`, `occupation`, `p_no`, `pno1`, `e_address`, `p_address`, `city`, `region`, `u_name`, `p_word`, `day_reg`, `status`) VALUES
-(1, 'Bonface', 'Maithya', 'DIT', 'DIT121-0904/2022', '', '254110007950', '255746553132', 'Maithyabon2@gmail.com', 'Kitengela', 'Nairobi', 'Kajiado', 'Maithya', '1817785c8c24645caed9264f5cac4f31', '2023-07-14', 0),
-(4, 'Genny', 'Mnzava', '', '', 'Lecturer', '', '255746553132', 'genesisf@yahoo.com', '2522, Arusha', 'Arusha', 'Arusha', 'geneswaa', 'fe3742082b02380c86075d11ba88ebc0', '2019-07-14', 1),
-(5, 'Agape', 'Tunzo', '', '', 'Saleswoman', '255717812676', '255746553132', 'agapemnzava@yahoo.com', '2522, Arusha', 'Arusha', 'Arusha', 'narindwa', '144d87c8323749c9bf3f0c71d3182f9d', '2019-07-14', 1),
-(6, 'Ivy', 'Maina', '', '', 'Engineer', '255717812676', '255746553132', 'Mainaivy123@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Ivy2003', '25f9e794323b453885f5181f1b624d0b', '2019-07-15', 1),
-(9, 'Andy', 'Tunzo', '', '', 'Manager', '255717812676', '255746553132', 'andy123@hotmail.com', '2522, Arusha', 'Arusha', 'Arusha', 'andrew', 'd41555c72445d4a3b05de048fe5f3e0d', '2019-07-15', 1),
-(10, 'Love', 'Faith', '', '', 'Assistant Manager', '255717812676', '255746553132', 'faithtunzo@google.com', '2522, Arusha', 'Arusha', 'Arusha', 'loveness', '1817785c8c24645caed9264f5cac4f31', '2019-07-23', 2),
-(11, 'qwert', 'yuiop', '', '', 'Plumber', '0784565656', '0784565656', 'faith.tunzo@yahoo.com', '345,Iringa', 'Iringa', 'Iringa', 'asdfg', '123456789', '2019-08-04', 3);
+(4, 'Gerald', 'Maina', '', '', 'Lecturer', '254110007950', '254110007950', 'Maithyabon2@gmail.com', 'Mombasa', 'Mombasa', 'Coast', 'Gerald', '25f9e794323b453885f5181f1b624d0b', '2023-07-14', 1),
+(5, 'Christine', 'Macira', '', '', 'Saleswoman', '254110007950', '254110007950', 'bonn.dev254@gmail.com', '2522, Arusha', 'Nakuru', 'Rift-valley', 'Christine', '25f9e794323b453885f5181f1b624d0b', '2023-07-14', 1),
+(6, 'Ivy', 'Maina', '', '', 'Engineer', '254110007950', '254110007950', 'maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Ivy2003', '25f9e794323b453885f5181f1b624d0b', '2023-07-15', 1),
+(9, 'Kelvin', 'Ingosi', '', '', 'Manager', '254110007950', '254110007950', 'bonn.dev254@gmail.com', '2523, Nairobi', 'Nairobi', 'Nairobi', 'Kelvin123', '25f9e794323b453885f5181f1b624d0b', '2023-07-15', 1),
+(10, 'Vyona', 'Njeri', '', '', 'Assistant Manager', '254110007950', '254110007950', 'bonn.dev254@gmail.com', '2524, Nairobi', 'Nairobi', 'Nairobi', 'Wanjeri', '25f9e794323b453885f5181f1b624d0b', '2023-07-23', 2),
+(11, 'Keith', 'Mzito', '', '', 'Plumber', '254110007950', '254110007950', 'bonn.dev254@gmail.com', '523, Nairobi', 'Nairobi', 'Nairobi', 'Keith001', '25f9e794323b453885f5181f1b624d0b', '2023-08-04', 3),
+(13, 'Benjamin', 'Orina', 'Bachelor in IT', 'Sct021-0511/2022', '', '254110007950', '254110007950', 'maithyabon2@gmail.com', '0090', 'Kitengela', 'Nairobi', 'Orina', '25f9e794323b453885f5181f1b624d0b', '2024-08-30', 0),
+(14, 'Bonface', 'Maithya', '', '', 'Enterprenuer', '254110007950', '254110007950', 'maithyabon2@gmail.com', '00', 'Nairobi, Kenya', 'Nairobi', 'Maithya', '25d55ad283aa400af464c76d713c07ad', '2024-09-05', 0);
 
 -- --------------------------------------------------------
 
@@ -189,13 +192,14 @@ CREATE TABLE `tenant_contacts` (
 --
 
 INSERT INTO `tenant_contacts` (`contact_id`, `tenant_id`, `fname1`, `lname1`, `occupation1`, `nature1`, `pno1`, `pno2`, `e_address1`, `p_address1`, `city1`, `region1`, `fname2`, `lname2`, `occupation2`, `nature2`, `pno3`, `pno4`, `e_address2`, `p_address2`, `city2`, `region2`) VALUES
-(1, 1, 'Simon', 'Maina', 'Lecturer', 'Brother', '0784949021', '0717225082', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Teacher', 'dad', '0754698589', '0658698589', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
-(4, 4, 'Stephen', 'Kanyi', 'Lecturer', 'Grandfather', '0712121212', '0745121212', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Teacher', 'brother', '0745151515', '0754151515', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
-(5, 5, 'Philip', 'Karanja', 'Lecturer', 'Brother', '0712121212', '0745121212', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Lecturer', 'brother', '0745151515', '0754151515', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
-(6, 6, 'Tugi', 'Kimani', 'Lecturer', 'Cousin', '0712121212', '0745121212', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Teacher', 'brother', '0745151515', '0754151515', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
-(9, 9, 'Celestine', 'Matei', 'Lecturer', 'Sister', '0712121212', '0745121212', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Lecturer', 'brother', '0745151515', '0754151515', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
-(11, 10, 'Abel', 'Mutua', 'Lecturer', 'Father', '0712121212', '0745121212', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Teacher', 'brother', '0745151515', '0754151515', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
-(12, 11, 'Timothy', 'Kimani', 'Lecturer', 'Uncle', '0717454545', '0745151515', '', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Lecturer', 'brother', '0745151515', '0717454545', '', '2544, Kajiado', 'Kitengela', 'Kajiado');
+(4, 4, 'Stephen', 'Kanyi', 'Lecturer', 'Grandfather', '0110007950', '0110007950', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Teacher', 'brother', '0110007950', '0110007950', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
+(5, 5, 'Philip', 'Karanja', 'Lecturer', 'Brother', '0110007950', '0110007950', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Lecturer', 'brother', '0110007950', '0110007950', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
+(6, 6, 'Tugi', 'Kimani', 'Lecturer', 'Cousin', '0110007950', '0110007950', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Teacher', 'brother', '0110007950', '0110007950', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
+(9, 9, 'Celestine', 'Matei', 'Lecturer', 'Sister', '0110007950', '0110007950', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Lecturer', 'brother', '0110007950', '0110007950', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
+(11, 10, 'Abel', 'Mutua', 'Lecturer', 'Father', '0110007950', '0110007950', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Teacher', 'brother', '0110007950', '0110007950', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
+(12, 11, 'Timothy', 'Kimani', 'Lecturer', 'Uncle', '0110007950', '0110007950', 'Maithyabon2@gmail.com', '2522, Nairobi', 'Nairobi', 'Nairobi', 'Bonface', 'Maithya', 'Lecturer', 'brother', '0110007950', '0110007950', 'bonn.dev254@gmail.com', '2544, Kajiado', 'Kitengela', 'Kajiado'),
+(14, 13, 'Bonface', 'Maithya', 'Student', 'Brother', '254110007950', '254110007950', 'maithyabon2@gmail.com', '0909', 'Kitengela', 'Kenya', 'Bonface', 'Maithya', 'Enterpernuerer', 'Brother', '254110007950', '254110007950', 'maithyabon2@gmail.com', '0909', 'Kitengela', 'Kenya'),
+(15, 14, 'Kelly', 'Umoja', 'Student', 'Brother', '254110007950', '254110007950', 'maithyabon2@gmail.com', '00', 'Kitengela', 'Kenya', 'Kelly', 'Umoja', 'Enterpernuerer', 'Brother', '254110007950', '254110007950', 'maithyabon2@gmail.com', '00', 'Kitengela', 'Kenya');
 
 -- --------------------------------------------------------
 
@@ -227,7 +231,7 @@ CREATE TABLE `tenant_in` (
 --
 
 INSERT INTO `tenant_in` (`in_id`, `contract_id`, `stat_keyholder`, `stat_electricityRemote`, `no_bulbs`, `stat_bulbs`, `stat_paint`, `stat_Windows`, `stat_toiletSink`, `stat_washingSink`, `stat_doorLock`, `stat_toiletDoorLock`, `water_units`, `comments`, `date_reg`, `status`) VALUES
-(1, 5, 'Good', 'Average', 2, 'Good', 'Average', 'Average', '', 'Average', 'Average', 'Average', 123, 'Please fix', '2019-08-08', 'Checked');
+(1, 5, 'Good', 'Average', 2, 'Good', 'Average', 'Average', '', 'Average', 'Average', 'Average', 123, 'Please fix', '2023-08-08', 'Checked');
 
 -- --------------------------------------------------------
 
@@ -257,8 +261,9 @@ CREATE TABLE `tenant_out` (
 --
 
 INSERT INTO `tenant_out` (`out_id`, `contract_id`, `stat_keyholder`, `stat_electricityRemote`, `no_bulbs`, `stat_bulbs`, `stat_paint`, `stat_Windows`, `stat_toiletSink`, `stat_washingSink`, `stat_doorLock`, `stat_toiletDoorLock`, `comments`, `date_reg`) VALUES
-(1, 9, 'Good', 'Good', 2, 'Average', 'Good', 'Good', 'Good', 'Good', 'Average', 'Average', 'Gotta Pay', '2019-08-08'),
-(2, 12, '', 'Bad', 1, '', 'Average', 'Good', 'Average', 'Good', 'Good', 'Average', 'Has to pay', '2019-08-12');
+(1, 9, 'Good', 'Good', 2, 'Average', 'Good', 'Good', 'Good', 'Good', 'Average', 'Average', 'Gotta Pay', '2023-08-08'),
+(2, 12, '', 'Bad', 1, '', 'Average', 'Good', 'Average', 'Good', 'Good', 'Average', 'Has to pay', '2023-08-12'),
+(3, 8, 'Good', 'Good', 3, 'Average', 'Good', '', 'Good', 'Good', 'Good', 'Good', 'Most of the Items were in good condition', '2024-08-30');
 
 -- --------------------------------------------------------
 
@@ -281,10 +286,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `role`, `pno`, `u_name`, `pword`, `date_reg`) VALUES
-(1, 'RHMS', 'Administrator', '254110007950', 'Administra', '200ceb26807d6bf99fd6f4f0d1ca54d4', '2019-07-15'),
-(2, 'Barack Kamau', 'Manager', '254114 286705', 'JJ', 'e807f1fcf82d132f9bb018ca6738a19f', '2019-08-09'),
-(3, 'ERHMS', 'Administrator', '254110007950', 'ADMIN', 'ADMIN123', '2024-08-23'),
-(4, 'CHRISTINE', 'Manager', '254110007950', 'MACIRA', '25f9e794323b453885f5181f1b624d0b', '2024-08-23');
+(5, 'Bonface Maithya', 'Administrator', '254110007950', 'ADMIN', '1817785c8c24645caed9264f5cac4f31', '2024-08-28'),
+(6, 'Barack Kamau', 'Manager', '254110007950', 'MANAGER', 'eb4dd1aebb2a199810a1604241e771c5', '2024-08-29'),
+(7, 'Maithya Kilonzo', 'Manager', '254110007950', 'Kilonzo', '25f9e794323b453885f5181f1b624d0b', '2024-08-30');
 
 --
 -- Indexes for dumped tables
@@ -354,13 +358,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `contract`
 --
 ALTER TABLE `contract`
-  MODIFY `contract_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `contract_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `house`
 --
 ALTER TABLE `house`
-  MODIFY `house_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `house_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -372,13 +376,13 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `tenant`
 --
 ALTER TABLE `tenant`
-  MODIFY `tenant_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `tenant_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tenant_contacts`
 --
 ALTER TABLE `tenant_contacts`
-  MODIFY `contact_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `contact_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tenant_in`
@@ -390,13 +394,13 @@ ALTER TABLE `tenant_in`
 -- AUTO_INCREMENT for table `tenant_out`
 --
 ALTER TABLE `tenant_out`
-  MODIFY `out_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `out_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

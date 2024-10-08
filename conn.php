@@ -1,6 +1,14 @@
 <?php
-$con = @mysqli_connect("localhost", "root", "", "rpms_db");
-if(!$con){
-  echo "Connection failed!".@mysqli_error($con);
+$host = "localhost"; 
+$username = "root";  
+$password = "";  
+$dbname = "rpms_db";
+
+// Create connection
+$con = mysqli_connect($host, $username, $password, $dbname);
+
+if (!$con) {
+    error_log("Connection failed: " . mysqli_connect_error());
+    die("Database connection failed. Please try again later.");
 }
 ?>

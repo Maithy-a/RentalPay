@@ -1,6 +1,12 @@
 <?php
-$conn = @mysqli_connect("localhost", "root", "", "tuma_pesa");
-if(!$conn){
-  echo "Connection failed!".@mysqli_error($conn);
+$host = "localhost"; 
+$username = "root";  
+$password = "";
+$dbname = "tuma_pesa";
+
+$conn = mysqli_connect($host, $username, $password, $dbname);
+if (!$conn) {
+    error_log("Connection failed: " . mysqli_connect_error()); 
+    die("Database connection failed. Please try again later.");
 }
 ?>

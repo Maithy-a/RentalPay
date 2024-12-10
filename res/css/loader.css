@@ -1,4 +1,4 @@
-/* Loader styles from Uiverse.io by tilakjain123 */
+
 .loader {
     position: fixed;
     top: 50%;
@@ -43,4 +43,7 @@
     filter: blur(25px);
     transition: filter 0.5s ease;
   }
-  
+  /* Hide loader after the page has loaded */
+.hidden {
+  display: none;
+}

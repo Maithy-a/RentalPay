@@ -2,8 +2,9 @@
 session_start();
 include "conn.php";
 
-function check($data) {
-    global $con; 
+function check($data)
+{
+    global $con;
     $data = trim($data);
     $data = htmlspecialchars($data);
     $data = stripslashes($data);
@@ -98,6 +99,7 @@ if (isset($_POST["login"])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -105,52 +107,61 @@ if (isset($_POST["login"])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Elsie Rental Management System</title>
-      <link rel="icon" href="res/img/office.png">
-      <link rel="stylesheet" href="res/css/loader.css">
+    <link rel="icon" href="res/img/office.png">
+    <link rel="stylesheet" href="res/css/loader.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css"
+        rel="stylesheet">
 </head>
+
 <body>
-<div class="loader">
-  <div></div>
-  <div></div>
-</div>
-<div class="blurred-content">
+    <div class="loader">
+        <div></div>
+        <div></div>
+    </div>
+    <div class="blurred-content">
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block">
-                                <img src="res/img/house.jpg" alt="Rental House" width="500" height="530" style="opacity;">
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4"><b><b>Elsie Rental Management System</b></h1>
-                                    </div>
-                                    <form class="user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" name="username" aria-describedby="emailHelp" value="<?php echo @$uname; ?>" placeholder="Username">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-12 col-md-9">
+                    <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <div class="row">
+                                <div class="col-lg-6 d-none d-lg-block">
+                                    <img src="res/img/house.jpg" alt="Rental House" width="500" height="530"
+                                        style="opacity;">
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4"><b><b>Elsie Rental Management System</b>
+                                            </h1>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+                                        <form class="user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user"
+                                                    name="username" aria-describedby="emailHelp"
+                                                    value="<?php echo @$uname; ?>" placeholder="Username">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control form-control-user"
+                                                    name="password" placeholder="Password">
+                                            </div>
+                                            <input class="btn btn-primary btn-user btn-block" type="submit" name="login"
+                                                value="Login">
+                                        </form>
+
+                                        <hr>
+                                        <div class="text-center">
+                                            <a class="small" href="forgot-password.php">Forgot Password?</a>
                                         </div>
-                                        <input class="btn btn-primary btn-user btn-block" type="submit" name="login" value="Login">
-                                    </form>
+                                        <div class="text-center">
+                                            <a class="small" href="register.php">Create an Account!</a>
+                                        </div>
 
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <a class="small" href="index.php">Back Home</a>
+                                        <div class="text-center">
+                                            <a class="small" href="index.php">Back Home</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -159,24 +170,24 @@ if (isset($_POST["login"])) {
                 </div>
             </div>
         </div>
-    </div>
-<script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sb-admin-2@latest/js/sb-admin-2.min.js"></script>
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sb-admin-2@latest/js/sb-admin-2.min.js"></script>
 
-<script>
-    window.addEventListener('load', function () {
-      setTimeout(function() {
-        document.querySelector('.loader').style.display = 'none'; 
-        document.querySelector('.blurred-content').style.filter = 'none'; 
-      }, 2000);
-    });
-</script>
+        <script>
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    document.querySelector('.loader').style.display = 'none';
+                    document.querySelector('.blurred-content').style.filter = 'none';
+                }, 2000);
+            });
+        </script>
 </body>
+
 </html>

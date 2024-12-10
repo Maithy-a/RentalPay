@@ -12,10 +12,18 @@
 
 </head>
 <body>
+
 <div class="loader">
   <div></div>
   <div></div>
 </div>
+<script>
+window.onload = function () {
+    document.querySelector('.loader').classList.add('hidden');
+    document.querySelector('.content').classList.remove('blurred-content');
+};
+
+</script>
 <div class="blurred-content">
     <nav class="navbar">
       <div class="container">

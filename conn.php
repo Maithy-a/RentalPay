@@ -1,7 +1,7 @@
 <?php
-$host = "localhost"; 
-$username = "root";  
-$password = "";  
+$host = "localhost";
+$username = "root";
+$password = "";
 $dbname = "rpms_db";
 
 // Create connection

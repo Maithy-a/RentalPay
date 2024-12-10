@@ -111,12 +111,12 @@ Below are the default login credentials for the system:
 **ADMINISTRATOR:**
 
 - Username: ADMIN
-- Password: Maithya123
+- Password: **Maithya123**
 
 **MANAGER (First):**
 
 - Username: Maithya
-- Password: Maithya123
+- Password: **Maithya123**
 
 **MANAGER (Alternate):**
 

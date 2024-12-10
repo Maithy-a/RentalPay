@@ -9,8 +9,8 @@ if (mysqli_query($con, $sql)) {
   echo '<style>body{display:none; color:red;}</style>';
   echo '<script>window.location.href = "contract_detail.php";</script>';
   exit;
-}else {
-  echo "<script type='text/javascript'>alert('FAILED ".mysqli_error($con).".');</script>";
+} else {
+  echo "<script type='text/javascript'>alert('FAILED " . mysqli_error($con) . ".');</script>";
   echo '<style>body{display:none; color:red;}</style>';
   echo '<script>window.location.href = "contract_detail.php";</script>';
   exit;
@@ -18,6 +18,4 @@ if (mysqli_query($con, $sql)) {
 
 mysqli_close($con);
 
-
-
- ?>
+?>

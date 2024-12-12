@@ -125,7 +125,7 @@ Below are the default login credentials for the system:
 
 **Tenant:**
 
-- Username: Ivy2003
+- Username: Ivy2003 , Gerald , Keith001 , Christine
 - Password: 123456789
 
 ### 8. Ensure XAMPP is Running

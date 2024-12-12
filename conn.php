@@ -1,14 +1,9 @@
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "rpms_db";
+// Ensure you're using mysqli
+$con = mysqli_connect("sql8.freemysqlhosting.net", "sql8751494", "w51IMewpGY", "sql8751494");
 
-// Create connection
-$con = mysqli_connect($host, $username, $password, $dbname);
-
+// Check connection
 if (!$con) {
-    error_log("Connection failed: " . mysqli_connect_error());
-    die("Database connection failed. Please try again later.");
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>
